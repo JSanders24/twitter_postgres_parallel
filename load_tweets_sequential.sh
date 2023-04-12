@@ -6,15 +6,15 @@ echo '==========================================================================
 echo 'load denormalized'
 echo '================================================================================'
 for file in $files; do
-    time unzip -p "$file" | sed 's/\\u0000//g' | psql postgresql://postgres:pass@localhost:3486/ -c "COPY tweets_jsonb (data) FROM STDIN csv quote e'\x01' delimiter e'\x02';"
+    time unzip -p "$file" | sed 's/\\u0000//g' | psql postgresql://postgres:pass@localhost:4887/ -c "COPY tweets_jsonb (data) FROM STDIN csv quote e'\x01' delimiter e'\x02';"
 done
 
 echo '================================================================================'
 echo 'load pg_normalized'
 echo '================================================================================'
-time python3 -u load_tweets.py --db=postgresql://postgres:pass@localhost:1695/ --inputs $files
+time python3 -u load_tweets.py --db=postgresql://postgres:pass@localhost:4888/ --inputs $files
 
 echo '================================================================================'
 echo 'load pg_normalized_batch'
 echo '================================================================================'
-time python3 -u load_tweets_batch.py --db=postgresql://postgres:pass@localhost:4872/ --inputs $files
+time python3 -u load_tweets_batch.py --db=postgresql://postgres:pass@localhost:4889/ --inputs $files
