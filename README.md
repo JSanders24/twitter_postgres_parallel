@@ -171,7 +171,7 @@ Ensure that your runtimes on the lambda server are recorded below.
 
 |                        | elapsed time (sequential) | elapsed time (parallel) |
 | -----------------------| ------------------------- | ------------------------- |
-| `pg_normalized`        |                           |                           | 
+| `pg_normalized`        |          8:20             |                           | 
 | `pg_normalized_batch`  |                           |                           | 
 | `pg_denormalized`      |                           |                           | 
 
